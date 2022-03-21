@@ -19,7 +19,7 @@ INSERT INTO
     weight_kg
   )
 VALUES
-  ('Gabumon', '2018-15-11', 2, true, 8);
+  ('Gabumon', '2018-11-15', 2, true, 8);
 
 INSERT INTO
   animals(
