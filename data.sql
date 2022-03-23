@@ -79,63 +79,116 @@ VALUES
   ('Digimon');
 
 /*Modify your inserted animals so it includes the species_id value:
-If the name ends in "mon" it will be Digimon
-All other animals are Pokemon*/
+ If the name ends in "mon" it will be Digimon
+ All other animals are Pokemon*/
 BEGIN TRANSACTION;
+
 UPDATE
   animals
 SET
-  species_id = (SELECT id FROM species where name = 'Digimon')
+  species_id = (
+    SELECT
+      id
+    FROM
+      species
+    where
+      name = 'Digimon'
+  )
 WHERE
   name LIKE '%mon%';
 
 UPDATE
   animals
 SET
-  species_id = (SELECT id FROM species where name = 'Pokemon' )
+  species_id = (
+    SELECT
+      id
+    FROM
+      species
+    where
+      name = 'Pokemon'
+  )
 WHERE
   name NOT LIKE '%mon%';
+
 COMMIT;
 
 /*Modify your inserted animals to include owner information (owner_id):
-Sam Smith owns Agumon.
-Jennifer Orwell owns Gabumon and Pikachu.
-Bob owns Devimon and Plantmon.
-Melody Pond owns Charmander, Squirtle, and Blossom.
-Dean Winchester owns Angemon and Boarmon.*/
+ Sam Smith owns Agumon.
+ Jennifer Orwell owns Gabumon and Pikachu.
+ Bob owns Devimon and Plantmon.
+ Melody Pond owns Charmander, Squirtle, and Blossom.
+ Dean Winchester owns Angemon and Boarmon.*/
 BEGIN TRANSACTION;
+
 UPDATE
   animals
 SET
-  owner_id = (SELECT id FROM owners where full_name = 'Sam Smith' )
+  owner_id = (
+    SELECT
+      id
+    FROM
+      owners
+    where
+      full_name = 'Sam Smith'
+  )
 WHERE
   name = 'Agumon';
 
 UPDATE
   animals
 SET
-  owner_id = (SELECT id FROM owners where full_name = 'Jennifer Orwell' )
+  owner_id = (
+    SELECT
+      id
+    FROM
+      owners
+    where
+      full_name = 'Jennifer Orwell'
+  )
 WHERE
   name IN ('Gabumon', 'Pikachu');
 
 UPDATE
   animals
 SET
-  owner_id = (SELECT id FROM owners where full_name = 'Bob' )
+  owner_id = (
+    SELECT
+      id
+    FROM
+      owners
+    where
+      full_name = 'Bob'
+  )
 WHERE
-name IN ('Devimon', 'Plantmon');
+  name IN ('Devimon', 'Plantmon');
 
 UPDATE
   animals
 SET
-  owner_id = (SELECT id FROM owners where full_name = 'Melody Pond' )
+  owner_id = (
+    SELECT
+      id
+    FROM
+      owners
+    where
+      full_name = 'Melody Pond'
+  )
 WHERE
- name IN ('Charmander', 'Squirtle', 'Blossom');
+  name IN ('Charmander', 'Squirtle', 'Blossom');
 
 UPDATE
   animals
 SET
-  owner_id = (SELECT id FROM owners where full_name = 'Dean Winchester')
+  owner_id = (
+    SELECT
+      id
+    FROM
+      owners
+    where
+      full_name = 'Dean Winchester'
+  )
 WHERE
-name IN ('Angemon', 'Boarmon');
+  name IN ('Angemon', 'Boarmon');
+
 COMMIT;
