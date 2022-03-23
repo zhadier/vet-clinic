@@ -9,5 +9,8 @@ CREATE TABLE animals(
     PRIMARY KEY(id)
 );
 
-ALTER TABLE animals
-ADD COLUMN species VARCHAR;
+-- Milestone-2
+ALTER TABLE
+    animals
+ADD
+    COLUMN species VARCHAR;

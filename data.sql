@@ -43,6 +43,7 @@ INSERT INTO
 VALUES
   ('Devimon', '2017-5-12', 5, true, 11);
 
+-- Milestone-2
 INSERT INTO
   animals (
     name,
