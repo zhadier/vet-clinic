@@ -85,14 +85,14 @@ BEGIN TRANSACTION;
 UPDATE
   animals
 SET
-  species_id = 2
+  species_id = (SELECT id FROM species where name = 'Digimon')
 WHERE
   name LIKE '%mon%';
 
 UPDATE
   animals
 SET
-  species_id = 1
+  species_id = (SELECT id FROM species where name = 'Pokemon' )
 WHERE
   name NOT LIKE '%mon%';
 COMMIT;
@@ -107,35 +107,35 @@ BEGIN TRANSACTION;
 UPDATE
   animals
 SET
-  owner_id = 1
+  owner_id = (SELECT id FROM owners where full_name = 'Sam Smith' )
 WHERE
   name = 'Agumon';
 
 UPDATE
   animals
 SET
-  owner_id = 2
+  owner_id = (SELECT id FROM owners where full_name = 'Jennifer Orwell' )
 WHERE
   name IN ('Gabumon', 'Pikachu');
 
 UPDATE
   animals
 SET
-  owner_id = 3
+  owner_id = (SELECT id FROM owners where full_name = 'Bob' )
 WHERE
 name IN ('Devimon', 'Plantmon');
 
 UPDATE
   animals
 SET
-  owner_id = 4
+  owner_id = (SELECT id FROM owners where full_name = 'Melody Pond' )
 WHERE
  name IN ('Charmander', 'Squirtle', 'Blossom');
 
 UPDATE
   animals
 SET
-  owner_id = 5
+  owner_id = (SELECT id FROM owners where full_name = 'Dean Winchester')
 WHERE
 name IN ('Angemon', 'Boarmon');
 COMMIT;
