@@ -9,5 +9,29 @@ CREATE TABLE animals(
     PRIMARY KEY(id)
 );
 
-ALTER TABLE animals
-ADD COLUMN species VARCHAR;
+-- Milestone-2
+ALTER TABLE
+    animals
+ADD
+    COLUMN species VARCHAR;
+
+-- Milestone-3
+CREATE TABLE owners(
+    id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    full_name VARCHAR(100),
+    age INT
+);
+
+CREATE TABLE species(
+    id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR(100)
+);
+
+ALTER TABLE
+    animals
+DROP 
+    COLUMN species,
+ADD
+    COLUMN species_id INT references species(id),
+ADD
+    COLUMN owner_id INT references owners(id);
